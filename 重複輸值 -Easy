@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n; // 讀入接下來要輸入的數字個數
+
+    int num;
+    int minValue;
+
+    for (int i = 0; i < n; i++) {
+        cin >> num;
+
+        if (i == 0) {
+            // 第一次輸入時初始化 minValue
+            minValue = num;
+        } else {
+            // 後續輸入比大小
+            if (num < minValue) {
+                minValue = num;
+            }
+        }
+    }
+
+    cout << minValue << endl; // 輸出最小值
+    return 0;
+}
