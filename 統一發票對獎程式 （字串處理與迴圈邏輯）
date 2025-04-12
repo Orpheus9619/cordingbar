@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string winningNumbers[5]; // 存放特別獎、特獎、三組頭獎
+    string invoiceNumber;
+
+    // 定義獎金對應規則（已按照獎金大小排序）
+    int prizeMoney[8] = {10000000, 2000000, 200000, 40000, 10000, 4000, 1000, 200};
+
+    // 讀取 5 組對獎號碼
+    for (int i = 0; i < 5; i++) {
+        cin >> winningNumbers[i];
+    }
+
+    // 逐行讀取發票號碼並對獎
+    while (cin >> invoiceNumber) {
+        int maxPrize = 0; // 記錄最大獎金
+
+        // 先檢查特別獎（1000 萬）
+        if (invoiceNumber == winningNumbers[0]) {
+            maxPrize = prizeMoney[0]; 
+        }
+        // 再檢查特獎（200 萬）
+        else if (invoiceNumber == winningNumbers[1]) {
+            maxPrize = prizeMoney[1];
+        }
+        // 再檢查頭獎（20 萬）與其他獎項
+        else {
+            for (int i = 2; i < 5; i++) { 
+                string winNum = winningNumbers[i];
+
+                for (int j = 3; j <= 8; j++) { // 依次比對頭獎、二獎...六獎
+                    if (invoiceNumber.substr(8 - j) == winNum.substr(8 - j)) {
+                        maxPrize = max(maxPrize, prizeMoney[8 - j + 2]);
+                    }
+                }
+            }
+        }
+
+        // 輸出結果
+        cout << invoiceNumber << " wins $" << maxPrize << "\n";
+    }
+
+    return 0;
+}
