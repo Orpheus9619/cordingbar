@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+int main(){
+    float C,F;
+    cin>>F;
+    C=(F-32)*5/9;
+    if(C<20)
+    cout<<C<<endl<<"畫畫"<<endl;
+    else if(20<=C&&C<24)
+    cout<<C<<endl<<"彈琴"<<endl;
+    else if(24<=C&&C<27)
+    cout<<C<<endl<<"下棋"<<endl;
+    else if(27<=C&&C<30)
+    cout<<C<<endl<<"賞花"<<endl;
+    else if (C>=30)
+    cout<<C<<endl<<"水療SPA"<<endl;
+    return 0;
+    
+}
